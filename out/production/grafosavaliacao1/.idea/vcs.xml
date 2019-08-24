@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+<<<<<<< HEAD:src/.idea/vcs.xml
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+=======
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+>>>>>>> 1271647c257903efd04594eda05050aa4d9588c2:.idea/vcs.xml
+  </component>
+</project>
