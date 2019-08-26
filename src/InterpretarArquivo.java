@@ -3,8 +3,9 @@ import java.util.Scanner;
 
 public class InterpretarArquivo {
     /**
-     * Executa
-     * @param comandos
+     * Executa comandos do arquivo lido
+     * @param comandos Lista de Strings de commandos a serem executadosm onde o primeiro indica a quantidade de nos
+     * no grafo, e o restante as coneccoes a serem formadas
      */
     public static String exercutarCommandos(ArrayList<String> comandos){
         String resultado = "";
@@ -17,7 +18,7 @@ public class InterpretarArquivo {
         for(int i = 1 ; i<=sizeGrafo ; i++){
             table.adicionaNo(i);
         }
-        System.out.println(table.getConnectedComponents());
+        //System.out.println(table.getConnectedComponents());
         for (String comando: comandos) {
             int i=0;
             while (i<comando.length() && comando.charAt(i)!=' '){
@@ -26,9 +27,9 @@ public class InterpretarArquivo {
             int firstNode = 0;
             int secondNode = 0;
             firstNode= Integer.valueOf(comando.substring(0,i));
-            System.out.print(firstNode+" ");
+            //System.out.print(firstNode+" ");
             secondNode= Integer.valueOf(comando.substring(i+1,comando.length()));
-            System.out.println(secondNode);
+            //System.out.println(secondNode);
             if(firstNode>0 && secondNode>0){
                 if(table.relacionaNo(firstNode,secondNode)){
                     resultado += table.getConnectedComponents()+"\r\n";

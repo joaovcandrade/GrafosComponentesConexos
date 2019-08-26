@@ -32,6 +32,11 @@ public class OperaArquivo {
         }
     }
 
+    /**
+     * Escreve em um arquivo destino nomeado fileName a string content
+     * @param fileName nome do arquivo com diretorio e extensao onde sera escrito
+     * @param content String a ser escrita no arquivo filename
+     */
     public static void EscreverArquivo(String fileName, String content) {
         try {
             FileWriter file = new FileWriter(fileName);

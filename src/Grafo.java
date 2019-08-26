@@ -99,6 +99,10 @@ public class Grafo {
         return contains;
     }
 
+    /**
+     * Retorna a quantidade de Grafos individuais dentre os nos
+     * @return Numero de Grafos individuais no mapa
+     */
     public int getConnectedComponents(){
         return this.connectedComponents;
     }

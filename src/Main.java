@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class Main {
-
+    /**
+     * Abre a janela de inputs a serem escritas.
+     * Extrai do arquivo de entrada os comandos e determina o nome e diretorio do arquivo de saida.
+     * @param args
+     */
     public static void main(String[] args) {//1. Create the frame.
         JFrame frame = new JFrame("Name Input");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,14 +25,14 @@ public class Main {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String inputFileName = fileNameInput.getText();
+                String inputFileName = "inputs/"+fileNameInput.getText();
                 String outputFileName = inputFileName;
                 while (outputFileName.length()>6){
                     outputFileName= outputFileName.substring(1,outputFileName.length());
                 }
-                outputFileName = "output"+outputFileName;
-                System.out.println(inputFileName);
-                System.out.println(outputFileName);
+                outputFileName = "outputs/output"+outputFileName;
+                //System.out.println(inputFileName);
+                //System.out.println(outputFileName);
                 ArrayList<String> reader = OperaArquivo.LerArquivo(inputFileName);
                 if(reader!=null){
                     String printInOutput = InterpretarArquivo.exercutarCommandos(reader);

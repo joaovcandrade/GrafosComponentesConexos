@@ -1,5 +1,8 @@
-/*import java.util.*;
-
+/*
+NAO UTILIZADO
+import java.util.*;
+ */
+/*
 public class PercorreGrafo{
 
   /**
