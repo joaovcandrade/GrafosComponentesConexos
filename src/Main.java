@@ -37,6 +37,7 @@ public class Main {
                 if(reader!=null){
                     String printInOutput = InterpretarArquivo.exercutarCommandos(reader);
                     OperaArquivo.EscreverArquivo(outputFileName, printInOutput);
+                    JOptionPane.showMessageDialog(frame, "Arquivo Processado! Procure na pasta Outputs");
                 }else{
                     JOptionPane.showMessageDialog(frame, "ERRO: Arquivo Nao Encontrado");
                 }
