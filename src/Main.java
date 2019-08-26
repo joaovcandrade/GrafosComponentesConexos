@@ -1,11 +1,45 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.*;
+
 public class Main {
 
-    public static void main(String[] args) {
-//        String fileName = args[0];
-//        while(fileName.length()!=0){
-//            fileName=fileName.substring(1,fileName.length());
-//            System.out.println();
-//        }
+    public static void main(String[] args) {//1. Create the frame.
+        JFrame frame = new JFrame("Name Input");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JLabel emptyLabel = new JLabel("Insira o nome do arquivo de entrada");
+        frame.getContentPane().add(emptyLabel, BorderLayout.PAGE_START);
+
+        JTextField fileNameInput = new JTextField(20);
+        frame.add(fileNameInput, BorderLayout.CENTER);
+        JButton submit = new JButton("Submit");
+        frame.getContentPane().add(submit, BorderLayout.PAGE_END);
+        frame.pack();
+
+        submit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String inputFileName = fileNameInput.getText();
+                String outputFileName = inputFileName;
+                while (outputFileName.length()>6){
+                    outputFileName= outputFileName.substring(1,outputFileName.length());
+                }
+                outputFileName = "output"+outputFileName;
+                System.out.println(inputFileName);
+                System.out.println(outputFileName);
+                ArrayList<String> reader = OperaArquivo.LerArquivo(inputFileName);
+                if(reader!=null){
+                    OperaArquivo.EscreverArquivo(outputFileName, "Arquivo de Input: "+inputFileName+"\n"+reader.toString());
+                }else{
+                    JOptionPane.showMessageDialog(frame, "ERRO: Arquivo nao encontrado");
+                }
+            }
+        });
+        frame.setVisible(true);
+
+        /*
         Grafo grafo = new Grafo();
         grafo.adicionaNo(1);
         grafo.adicionaNo(2);
@@ -13,6 +47,6 @@ public class Main {
         grafo.adicionaNo(4);
         System.out.println(grafo.connectedComponents);
         if(!grafo.relacionaNo(1,1)) System.out.println("CICLO!");
-
+        */
     }
 }

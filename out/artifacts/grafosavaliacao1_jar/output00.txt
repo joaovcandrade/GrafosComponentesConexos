@@ -1,0 +1,1 @@
+Arquivo de Input: input00.txt
