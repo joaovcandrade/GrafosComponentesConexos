@@ -15,13 +15,27 @@ public class GrafoNo {
     }
 
     /**
-     * Insere um No paraInserir na lista de links do grafo. Ignora se o grafo ja existe nos links.
+     * Insere um No paraInserir na lista de links do grafo. Retorna false e não insere se o grafo ja existe nos links, caso contrario true.
      * @param paraInserir GrafoNo a ser inserido nos links.
      */
-    public void inserirNo(GrafoNo paraInserir){
+    public boolean inserirNo(GrafoNo paraInserir){
         if(!this.links.contains(paraInserir)){
             links.add(paraInserir);
+            return true;
         }
+        return false;
+    }
+
+    /**
+     * Insere um No paraInserir na lista de links do grafo. Retorna false e não insere se o grafo ja existe nos links, caso contrario true.
+     * @param paraRemover GrafoNo a ser inserido nos links.
+     */
+    public boolean removerNo(GrafoNo paraRemover){
+        if(this.links.contains(paraRemover)){
+            links.remove(paraRemover);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -36,7 +50,7 @@ public class GrafoNo {
      * Retorna a lista de viznhos do Grafo
      * @return Lista interna de vizinhos do grafo, links
      */
-    public ArrayList getLinks(){
+    public ArrayList<GrafoNo> getLinks(){
         return this.links;
     }
 }
