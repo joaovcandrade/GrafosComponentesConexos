@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Grafo {
 
-    public int connectedComponents;
+    private int connectedComponents;
     private Map<Integer, GrafoNo> grafo;
 
 
@@ -30,12 +30,15 @@ public class Grafo {
             nodeB.removerNo(nodeA);
             return false;
         }
-        else return true;
+        else{
+            connectedComponents--;
+            return true;
+        }
 
     }
 
 
-    public boolean possuiCiclo(GrafoNo node){
+    private boolean possuiCiclo(GrafoNo node){
 
         ArrayList<GrafoNo> links = node.getLinks();
         if(links.size() == 1) return false;
@@ -50,7 +53,7 @@ public class Grafo {
         return contains;
     }
 
-    public boolean buscaNo(GrafoNo node, GrafoNo nodeKey){
+    private boolean buscaNo(GrafoNo node, GrafoNo nodeKey){
 
 
         if(node.getLinks().size() == 1) return false;
@@ -64,5 +67,7 @@ public class Grafo {
         return contains;
     }
 
-
+    public int getConnectedComponents(){
+        return this.connectedComponents;
+    }
 }
