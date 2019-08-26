@@ -2,8 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InterpretarArquivo {
-    public static void ler_Exercutar(String fileName){
-        ArrayList<String> comandos = OperaArquivo.LerArquivo(fileName);
+    /**
+     * Executa
+     * @param comandos
+     */
+    public static String exercutarCommandos(ArrayList<String> comandos){
+        String resultado = "";
         for(String s : comandos){
             System.out.println(s);
         }
@@ -12,5 +16,6 @@ public class InterpretarArquivo {
         for(int i = 1 ; i<=sizeGrafo ; i++){
             table.adicionaNo(i);
         }
+        return resultado;
     }
 }

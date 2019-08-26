@@ -31,9 +31,10 @@ public class Main {
                 System.out.println(outputFileName);
                 ArrayList<String> reader = OperaArquivo.LerArquivo(inputFileName);
                 if(reader!=null){
-                    OperaArquivo.EscreverArquivo(outputFileName, "Arquivo de Input: "+inputFileName+"\n"+reader.toString());
+                    String printInOutput = InterpretarArquivo.exercutarCommandos(reader);
+                    OperaArquivo.EscreverArquivo(outputFileName, printInOutput);
                 }else{
-                    JOptionPane.showMessageDialog(frame, "ERRO: Arquivo nao encontrado");
+                    JOptionPane.showMessageDialog(frame, "ERRO: Arquivo Nao Encontrado");
                 }
             }
         });
