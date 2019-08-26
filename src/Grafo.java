@@ -34,37 +34,47 @@ public class Grafo {
         GrafoNo nodeA = grafo.get(node1);
         GrafoNo nodeB = grafo.get(node2);
 
-        if(!nodeA.inserirNo(nodeB)  || !nodeB.inserirNo(nodeA)) return false;
-        if(possuiCiclo(nodeA)){
-            nodeA.removerNo(nodeB);
-            nodeB.removerNo(nodeA);
+        if(possuiCiclo(nodeA,nodeB)) {
             return false;
         }
-        else{
-            connectedComponents--;
-            return true;
-        }
-
+        nodeA.inserirNo(nodeB);
+        nodeB.inserirNo(nodeA);
+        connectedComponents--;
+        return true;
     }
 
     /**
      * Verifica se há ciclo a partir de um determinado nó.
-     * @param node Nó de partida.
+     * @param nodeA Nó de partida.
+     * @param nodeB Nó de chegada.
      * @return true caso houver clico, caso contrário não.;
      */
-    private boolean possuiCiclo(GrafoNo node){
+    private boolean possuiCiclo(GrafoNo nodeA, GrafoNo nodeB){
 
-        ArrayList<GrafoNo> links = node.getLinks();
-        if(links.size() == 1) return false;
-
-        boolean contains = false;
-        for(GrafoNo nodeLinked : links){
-
-            for(GrafoNo nodeLinked2 : nodeLinked.getLinks()){
-                if(buscaNo(nodeLinked2, node)) contains = true;
+        ArrayList<GrafoNo> linksA = nodeA.getLinks();
+        if(linksA.contains(nodeB)) return true;
+        else{
+            for(GrafoNo link : linksA){
+                if(possuiCiclo(nodeA,link,nodeB)){
+                    return true;
+                }
             }
         }
-        return contains;
+        return false;
+    }
+    private boolean possuiCiclo(GrafoNo origin, GrafoNo nodeA, GrafoNo nodeB){
+        ArrayList<GrafoNo> linksA = nodeA.getLinks();
+        if(linksA.contains(nodeB)) return true;
+        else{
+            for(GrafoNo link :linksA){
+                if(link!=origin){
+                    if(possuiCiclo(nodeA,link,nodeB)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     /**
