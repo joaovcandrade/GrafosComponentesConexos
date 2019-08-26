@@ -23,14 +23,18 @@ public class InterpretarArquivo {
             while (i<comando.length() && comando.charAt(i)!=' '){
                 i++;
             }
-            int firstNode= Integer.valueOf(comando.substring(0,i));
+            int firstNode = 0;
+            int secondNode = 0;
+            firstNode= Integer.valueOf(comando.substring(0,i));
             System.out.print(firstNode+" ");
-            int secondNode= Integer.valueOf(comando.substring(i+1,comando.length()));
+            secondNode= Integer.valueOf(comando.substring(i+1,comando.length()));
             System.out.println(secondNode);
-            if(table.relacionaNo(firstNode,secondNode)){
-                resultado += table.getConnectedComponents()+"\r\n";
-            }else{
-                resultado += table.getConnectedComponents()+" "+"CICLO FORMADO!\r\n";
+            if(firstNode>0 && secondNode>0){
+                if(table.relacionaNo(firstNode,secondNode)){
+                    resultado += table.getConnectedComponents()+"\r\n";
+                }else{
+                    resultado += table.getConnectedComponents()+" "+"CICLO FORMADO!\r\n";
+                }
             }
         }
         return resultado;

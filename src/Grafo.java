@@ -33,8 +33,10 @@ public class Grafo {
     public boolean relacionaNo(int node1, int node2){
         GrafoNo nodeA = grafo.get(node1);
         GrafoNo nodeB = grafo.get(node2);
-
-        if(possuiCiclo(nodeA,nodeB)) {
+        if(node1 == node2){
+            return false;
+        }
+        if(possuiCiclo(nodeA,nodeB) && possuiCiclo(nodeB,nodeA)) {
             return false;
         }
         nodeA.inserirNo(nodeB);
@@ -54,15 +56,14 @@ public class Grafo {
         ArrayList<GrafoNo> linksA = nodeA.getLinks();
         if(linksA.contains(nodeB)) return true;
         else{
-            for(GrafoNo link : linksA){
-                if(possuiCiclo(nodeA,link,nodeB)){
-                    return true;
-                }
+            for(GrafoNo link :linksA){
+                if(possuiCiclo(nodeA,link,nodeB)){ return true; }
             }
         }
         return false;
     }
     private boolean possuiCiclo(GrafoNo origin, GrafoNo nodeA, GrafoNo nodeB){
+
         ArrayList<GrafoNo> linksA = nodeA.getLinks();
         if(linksA.contains(nodeB)) return true;
         else{
